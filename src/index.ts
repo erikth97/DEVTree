@@ -1,6 +1,4 @@
-// const express = require ('express') // CJS Common JS
 import express from 'express'  // ESM Ecmascript modules
-
 const app = express()
 
 // R O U T I N G
