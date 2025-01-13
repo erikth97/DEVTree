@@ -1,8 +1,11 @@
 import { Router } from "express"
-
 const router = Router ()
 
-// R O U T I N G
+// A U T H  & R E G I S T E R 
+router.post('/auth/register', (req, res) => {
+    console.log('Desde Register')
+})
 
+// R O U T I N G
 
 export default router;
