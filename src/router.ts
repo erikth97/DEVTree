@@ -1,10 +1,9 @@
-import { Router } from "express"
+import { Router} from "express";
 import { createAccount } from "./handlers";
 
+const router = Router()
 
-const router = Router ()
+// A U T H  &  R E G I S T R A T I O N
+router.post('/register', createAccount)
 
-// A U T H  & R E G I S T E R 
-router.post('/auth/register', createAccount)
-
-export default router;
+export default router 
