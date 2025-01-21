@@ -7,8 +7,8 @@ const router = Router()
 // A U T H  &  R E G I S T R A T I O N
 router.post('/auth/register', 
     body('handle')
-        .notEmpty(),
-        //.withMessage('Handle is required'),
+        .notEmpty()
+        .withMessage('Handle is required'),
     body('name')
         .notEmpty()
         .withMessage('Name is required'),
