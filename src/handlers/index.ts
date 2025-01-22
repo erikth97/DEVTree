@@ -42,4 +42,16 @@ export const login = async (req: Request, res: Response) => {
     if(!errors.isEmpty()) {
         return res.status(400).json({errors: errors.array()})   
     }
+
+    const { email, password } = req.body
+
+    // C H E C K  U S E R  E X I S T S
+    const user = await User.findOne({email})
+    if (!user) {
+        const error = new Error('User Already Exists')
+        return res.status(404).json({error : error.message})
+    }
+    
+    // C H E C K  P A S S W O R D
+
 }
