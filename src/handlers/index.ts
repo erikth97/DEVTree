@@ -2,7 +2,7 @@ import type { Request, Response } from "express"
 import { validationResult } from "express-validator"
 import slug from "slug"
 import User from "../models/User"
-import { hashPassword } from "../utils/auth"
+import { checkPassword, hashPassword } from "../utils/auth"
 
 export const createAccount = async (req: Request, res: Response) => {
 
@@ -53,5 +53,11 @@ export const login = async (req: Request, res: Response) => {
     }
     
     // C H E C K  P A S S W O R D
+    const isPasswordCorrect = await checkPassword(password, user.password)
+    if (!isPasswordCorrect) {
+        const error = new Error('Invalid Password')
+        return res.status(401).json({error : error.message})
+    }
 
+    res.send('Authenticated...')
 }
